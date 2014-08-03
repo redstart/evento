@@ -1,0 +1,3 @@
+Evento is an app for organising events and awesome parties.
+
+Users can create events and invite other people.
