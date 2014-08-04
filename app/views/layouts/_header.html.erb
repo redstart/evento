@@ -1,0 +1,14 @@
+
+<div class="pull-right">
+<% if signed_in? %>
+
+<p>Welcome, <%= current_user.name %>!</p>
+
+	<%= link_to 'Sign out', signout_path, method: "delete", class: "btn btn-primary" %><br>
+
+<% else %>
+
+	<%= link_to 'Sign in', signin_path, class: "btn btn-primary" %><br>
+
+<% end %>
+</div>
