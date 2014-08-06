@@ -1,2 +1,15 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1> <%= @user.name %>'s profile page</h1>
+
+<% if @user.created_events.any? %>
+
+	<ul>
+	<% @user.created_events.each do |event| %>
+		<li> <%= event %> </li>
+	<% end %>
+	</ul>
+
+<% else %>
+	
+	<p>You have not create any event yet.</p>
+
+<% end %>

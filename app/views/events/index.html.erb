@@ -1,0 +1,13 @@
+<% if @events.any? %>
+	
+<ul>
+<% @events.each do |event| %>
+	<li><%= link_to event.title, event %></li>
+<% end %>
+</ul>
+
+<% else %>
+
+	<p>Event list is empty</p>
+
+<% end %>
