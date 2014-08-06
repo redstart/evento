@@ -1,5 +1,14 @@
 @import 'bootstrap';
 
+
+.header-button, .welcome {
+	display: inline;
+}
+
+.welcome {
+	margin-right: 20px;
+}
+
 .jumbotron {
 	margin-top: 150px;
 	background-color: #f0f0f0;
