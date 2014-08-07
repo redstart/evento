@@ -1,13 +1,30 @@
 <% if @events.any? %>
-	
-<ul>
-<% @events.each do |event| %>
-	<li><%= link_to event.title, event %></li>
-<% end %>
-</ul>
+	<h2>Past events</h2>
+	<% if @past_events.any? %>
+		
+		<ul>
+		<% @past_events.each do |event| %>
+			<li><%= link_to event.title, event %></li>
+		<% end %>
+		</ul>
+
+	<% else %>
+		There are not past events.
+	<% end %>
+
+	<h2>Upcoming events</h2>
+	<% if @upcoming_events.any? %>	
+		<ul>
+		<% @upcoming_events.each do |event| %>
+			<li><%= link_to event.title, event %></li>
+		<% end %>
+		</ul>
+	<% else %>
+		There are not upcoming events.
+	<% end %>
 
 <% else %>
 
-	<p>Event list is empty</p>
+	<p>Event list is empty.</p>
 
 <% end %>
