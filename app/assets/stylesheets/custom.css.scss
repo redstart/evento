@@ -1,19 +1,30 @@
 @import 'bootstrap';
 
+#logo img {
+	width: 12em;
+	margin: 10px 0 0 20px;
+}
+
+.navbar {
+	padding: 0 20px;	
+
+}
+
+#header-top {
+	/*background: #f3f3f3;*/
+	height: 6em;
+}
+
 ul li {
 	list-style-type: none;
 }
 
-.header-button, .welcome {
-	display: inline;
-}
-
-.welcome {
-	margin-right: 20px;
+.welcome p {
+	padding: 5px 0 0 0;
 }
 
 .jumbotron {
-	margin-top: 100px;
+	margin-top: 2em;
 	background-color: #f0f0f0;
 	border: 1px solid #ddd; 
 }
