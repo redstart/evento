@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -51,4 +51,10 @@ end
 group :test do
 	gem 'selenium-webdriver', '~> 2.42.0'
 	gem 'capybara', '~> 2.4.1'
+end
+
+group :development do
+	gem 'pg'
+	gem 'populator', '~> 1.0.0'
+	gem 'faker', '~> 1.4.2'
 end

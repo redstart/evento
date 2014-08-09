@@ -13,17 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20140806185639) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "date"
+    t.date     "date"
     t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
   end
 
-  add_index "events", ["creator_id"], name: "index_events_on_creator_id"
+  add_index "events", ["creator_id"], name: "index_events_on_creator_id", using: :btree
 
   create_table "invitations", force: true do |t|
     t.integer  "attendee_id"
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 20140806185639) do
     t.datetime "updated_at"
   end
 
-  add_index "invitations", ["attended_event_id"], name: "index_invitations_on_attended_event_id"
-  add_index "invitations", ["attendee_id"], name: "index_invitations_on_attendee_id"
+  add_index "invitations", ["attended_event_id"], name: "index_invitations_on_attended_event_id", using: :btree
+  add_index "invitations", ["attendee_id"], name: "index_invitations_on_attendee_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -42,6 +45,6 @@ ActiveRecord::Schema.define(version: 20140806185639) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
