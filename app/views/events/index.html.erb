@@ -1,5 +1,5 @@
 <% if @events.any? %>
-	<h2>Past events</h2>
+	<!-- <h2>Past events</h2>
 	<% if @past_events.any? %>
 		
 		<ul>
@@ -10,13 +10,23 @@
 
 	<% else %>
 		There are not past events.
-	<% end %>
+	<% end %> -->
 
-	<h2>Upcoming events</h2>
+	<!-- <h2>Upcoming events</h2> -->
 	<% if @upcoming_events.any? %>	
-		<ul>
+		<ul class="col-lg-7">
 		<% @upcoming_events.each do |event| %>
-			<li><%= link_to event.title, event %></li>
+			<li>
+				<div class="event-slot">
+					<div class="right"> <%= image_tag(event.img_url) %></div>
+					<div>
+					<h3><%= link_to event.title, event %></h3>
+					<p><span class="glyphicon glyphicon-calendar"></span> <%= event.date.strftime('%A, %l:%M %p') %></p>
+					<p><span class="glyphicon glyphicon-map-marker"></span> <%= event.location %></p>
+					<p class="event-desc"> <%= event.description.truncate(150) %></p>
+					</div>
+				</div>
+			</li>
 		<% end %>
 		</ul>
 	<% else %>

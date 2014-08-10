@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 #logo img {
 	width: 12em;
@@ -13,6 +14,37 @@
 #header-top {
 	/*background: #f3f3f3;*/
 	height: 6em;
+}
+
+.event-desc {
+	clear: both;
+}
+
+h3 {
+	padding: 0 0 0.5em 0;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.clear {
+	clear: right;
+}
+
+.event-slot {
+	border-bottom: 1px solid #f2f2f2;
+	padding: 1em 0;
+	height: 100%;
+}
+
+.event-slot img {
+	display: inline;
+	margin: 1em 0 1em 0;
 }
 
 ul li {

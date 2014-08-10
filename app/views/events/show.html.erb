@@ -1,12 +1,20 @@
-<%= @event.title %>
+<div class="col-lg-7">
 
-<%= @event.creator.name %>
+<div class="right"> <%= image_tag(@event.img_url) %></div>
+
+<h3><%= @event.title %></h3>
+
+<p><%= @event.creator.name %></p>
+
+<p><span class="glyphicon glyphicon-calendar"></span> <%= @event.date.strftime('%A, %l:%M %p') %></p>
+					<p><span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %></p>
+					<p class="event-desc"> <%= @event.description %></p>
 
 <% if @event.attendees.any? %>
 	
 	<ul>
 		<% @event.attendees.each do |attendee| %>
-			<li> <%= attendee %></li>
+			<li><%= attendee %></li>
 		<% end %>
 	</ul>
 <% else %>
@@ -14,3 +22,5 @@
 	<p>Nobody invited</p>
 	
 <% end %>
+
+</div>
