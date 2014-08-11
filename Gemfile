@@ -58,3 +58,5 @@ group :development do
 	gem 'populator', '~> 1.0.0'
 	gem 'faker', '~> 1.4.2'
 end
+
+gem "paperclip", "~> 4.1"

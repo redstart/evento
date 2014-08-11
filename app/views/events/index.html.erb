@@ -18,7 +18,7 @@
 		<% @upcoming_events.each do |event| %>
 			<li>
 				<div class="event-slot">
-					<!-- <div class="right"> <%= image_tag(event.img_url) %></div> -->
+					<div class="right"> <%= image_tag event.image.url(:thumb) %></div>
 					<div>
 					<h3><%= link_to event.title, event %></h3>
 					<p><span class="glyphicon glyphicon-calendar"></span> <%= event.date.strftime('%A, %e %B, %Y') %></p>
