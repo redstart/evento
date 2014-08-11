@@ -11,7 +11,6 @@ namespace :db do
 			event.date = 6.months.ago..1.year.since(Time.now)
 			event.created_at = 1.year.ago..Time.now
 			event.creator_id = 1..20
-			event.img_url = 'default.png'
 		end
 
 		User.populate 20 do |user|

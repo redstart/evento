@@ -14,14 +14,14 @@
 
 	<!-- <h2>Upcoming events</h2> -->
 	<% if @upcoming_events.any? %>	
-		<ul class="col-lg-7">
+		<ul class="col-lg-7 col-lg-offset-1">
 		<% @upcoming_events.each do |event| %>
 			<li>
 				<div class="event-slot">
-					<div class="right"> <%= image_tag(event.img_url) %></div>
+					<!-- <div class="right"> <%= image_tag(event.img_url) %></div> -->
 					<div>
 					<h3><%= link_to event.title, event %></h3>
-					<p><span class="glyphicon glyphicon-calendar"></span> <%= event.date.strftime('%A, %l:%M %p') %></p>
+					<p><span class="glyphicon glyphicon-calendar"></span> <%= event.date.strftime('%A, %e %B, %Y') %></p>
 					<p><span class="glyphicon glyphicon-map-marker"></span> <%= event.location %></p>
 					<p class="event-desc"> <%= event.description.truncate(150) %></p>
 					</div>
