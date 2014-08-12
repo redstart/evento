@@ -1,49 +1,69 @@
-<h1> <%= current_user.name %>'s profile page</h1>
+<div class="profile-tab">
 
-<h2>Your events:</h2>
+	<div class="profile col-lg-2 col-lg-offset-1 pull-left">
 
-<% if current_user.created_events.any? %>
+		<div class="avatar"><%= image_tag current_user.avatar(:avatar), class: 'img-circle' %></div>
 
-	<ul>
-	<% current_user.created_events.each do |event| %>
-		<li> <%= link_to event.title, event_path %> </li>
-	<% end %>
-	</ul>
+		<h4> <%= current_user.name %></h4>
 
-<% else %>
-	
-	<p>You have not create any event yet.</p>
+		<p><%= current_user.email %></p>
 
-<% end %>
+		<%= link_to 'Update profile', edit_user_path, class: 'btn btn-success' %>
 
-<h2>Past events you attended at:</h2>
+		</div>
 
-<% if @past_events.any? %>
+		<div class="col-lg-8">
 
-	<ul>
-	<% current_user.past_events.each do |event| %>
-		<li> <%= link_to event.title, event_path %> </li>
-	<% end %>
-	</ul>
+		<p class="event-group">Created events:</p>
 
-<% else %>
-	
-	<p>There are not past events</p>
+		<% if current_user.created_events.any? %>
 
-<% end %>
+			<ul>
+			<% current_user.created_events.each do |event| %>
+				<li> <%= link_to event.title, event_path %> </li>
+			<% end %>
+			</ul>
 
-<h2>Future events you will attend at:</h2>
+		<% else %>
+			
+			<p class="message">You have not create any event yet.</p>
+			<%= link_to 'Create an event', new_event_path, class: 'btn btn-success' %>
 
-<% if @upcoming_events.any? %>
+		<% end %>
 
-	<ul>
-	<% current_user.upcoming_events.each do |event| %>
-		<li> <%= link_to event.title, event_path %> </li>
-	<% end %>
-	</ul>
+		<p class="event-group">Past events you attended at:</p>
 
-<% else %>
-	
-	<p>There are not upcoming events</p>
+		<% if @past_events.any? %>
 
-<% end %>
+			<ul>
+			<% current_user.past_events.each do |event| %>
+				<li> <%= link_to event.title, event_path %> </li>
+			<% end %>
+			</ul>
+
+		<% else %>
+			
+			<p class="message">There are not past events</p>
+
+		<% end %>
+
+		<p class="event-group">Future events you will attend at:</p>
+
+		<% if @upcoming_events.any? %>
+
+			<ul>
+			<% current_user.upcoming_events.each do |event| %>
+				<li> <%= link_to event.title, event_path %> </li>
+			<% end %>
+			</ul>
+
+		<% else %>
+			
+			<p class="message">There are not upcoming events</p>
+
+		<% end %>
+
+
+	</div>
+
+</div>

@@ -25,16 +25,17 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 	end
 
+	def edit
+		
+	end
+
+	def update
+
+	end
 
 	private
 
 		def event_params
 			params.require(:event).permit(:title, :description, :date, :location, :image)
-		end
-
-		def signed_in_user
-			unless signed_in?
-			redirect_to signin_url, notice: "Please log in."
-			end
 		end
 end

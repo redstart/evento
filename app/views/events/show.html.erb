@@ -8,9 +8,9 @@
 <p><span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %></p>
 <p class="event-desc"> <%= @event.description %></p>
 
-<p><%= @event.creator.name %></p>
+<p>Created by: <%= link_to @event.creator.name, @event.creator %></p>
 
-<% if @event.attendees.any? %>
+<!--<% if @event.attendees.any? %>
 	
 	<ul>
 		<% @event.attendees.each do |attendee| %>
@@ -19,8 +19,8 @@
 	</ul>
 <% else %>
 	
-	<p>Nobody invited</p>
+	<p class="message">Nobody invited</p>
 	
-<% end %>
+<% end %>-->
 
 </div>
