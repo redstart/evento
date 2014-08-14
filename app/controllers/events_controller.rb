@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 
-	before_action :signed_in_user, only: [:new, :create]
+	before_action :creator?, only: [:edit, :update, :destroy]
+	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
 		@events = Event.all
@@ -26,11 +27,23 @@ class EventsController < ApplicationController
 	end
 
 	def edit
-		
+		@event = Event.find(params[:id])
 	end
 
 	def update
+		@event = Event.find(params[:id])
+	    if @event.update_attributes(event_params)&&(current_user=@event.creator)
+	      flash[:success] = "Event details updated"
+	      redirect_to @event
+	    else
+	      render :edit
+	    end
+	end
 
+	def destroy
+		Event.find(params[:id]).destroy
+		flash[:success] = "Event deleted"
+		redirect_to current_user
 	end
 
 	private

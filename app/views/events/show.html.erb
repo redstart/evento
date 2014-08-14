@@ -8,7 +8,15 @@
 <p><span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %></p>
 <p class="event-desc"> <%= @event.description %></p>
 
-<p>Created by: <%= link_to @event.creator.name, @event.creator %></p>
+<p>Created by: <%= link_to @event.creator.username, @event.creator %></p>
+
+<% if current_user == @event.creator %>
+
+<%= link_to 'Update event details', edit_event_path %>
+
+<%= link_to 'Delete this event', event_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% end %>
 
 <!--<% if @event.attendees.any? %>
 	

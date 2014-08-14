@@ -1,14 +1,16 @@
 Evento::Application.routes.draw do
+
+  root 'events#index'
   
-  root 'users#new'
+  devise_for :users
 
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :events, only: [:index, :new, :create, :show]
+  resources :users, only: [:show]
+  
+  resources :events
 
-  match '/signin', to: 'sessions#new', via: 'get'
-  match '/signup', to: 'users#new', via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
+  # match '/signin', to: 'sessions#new', via: 'get'
+  # match '/signup', to: 'users#new', via: 'get'
+  # match '/signout', to: 'sessions#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

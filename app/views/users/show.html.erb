@@ -2,17 +2,15 @@
 
 	<div class="profile col-lg-2 col-lg-offset-1 pull-left">
 
-		<div class="avatar"><%= image_tag current_user.avatar(:avatar), class: 'img-circle' %></div>
-
-		<h4> <%= current_user.name %></h4>
+		<h4> <%= current_user.username %></h4>
 
 		<p><%= current_user.email %></p>
 
-		<%= link_to 'Update profile', edit_user_path, class: 'btn btn-success' %>
+		<%= link_to 'Update profile', edit_user_registration_path, class: 'btn btn-success' %>
 
 		</div>
 
-		<div class="col-lg-8">
+		<div class="col-lg-8 event-feed">
 
 		<p class="event-group">Created events:</p>
 
@@ -20,7 +18,10 @@
 
 			<ul>
 			<% current_user.created_events.each do |event| %>
-				<li> <%= link_to event.title, event_path %> </li>
+				<li> 
+					<%= link_to (image_tag event.image.url(:thumb)), event %><br /> 
+					<%= link_to event.title, event %>
+				</li>
 			<% end %>
 			</ul>
 

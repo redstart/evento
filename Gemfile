@@ -60,3 +60,4 @@ group :development do
 end
 
 gem "paperclip", "~> 4.1"
+gem 'devise', '~> 3.3.0'

@@ -3,6 +3,7 @@ namespace :db do
 	task :populate => :environment do
 
 		[User, Event, Invitation].each(&:delete_all)
+		password = "password"
 
 		Event.populate 20 do |event|
 			event.title = Populator.words(1..3).titleize
@@ -14,8 +15,10 @@ namespace :db do
 		end
 
 		User.populate 20 do |user|
-			user.name = Faker::Name.name
-			user.email = Faker::Internet.email			
+			user.username = Faker::Name.name
+			user.email = Faker::Internet.email	
+ 			user.encrypted_password = User.new(:password => password).encrypted_password
+ 			user.sign_in_count = 1	
 		end
 	end
 end
