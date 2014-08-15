@@ -1,12 +1,17 @@
 Evento::Application.routes.draw do
 
-  root 'events#index'
-  
   devise_for :users
+  
+  root 'events#index'
 
   resources :users, only: [:show]
   
-  resources :events
+  resources :events do
+    member do
+      post :attend
+      post :cancel
+    end
+  end
 
   # match '/signin', to: 'sessions#new', via: 'get'
   # match '/signup', to: 'users#new', via: 'get'

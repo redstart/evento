@@ -5,13 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :created_events, foreign_key: "creator_id", class_name: "Event", dependent: :destroy
-  has_many :invitations, foreign_key: "attendee_id"
-  has_many :attended_events, through: :invitations
+  has_many :registrations, foreign_key: "attendee_id"
+  has_many :attended_events, through: :registrations
 
-  # validates :name, presence: true
-  # validates :email, presence: true, uniqueness: { case_sensitive: false }
-  # validates_format_of :email, with: /@/
-  # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  # validates :username, presence: true
 
   def upcoming_events
   	self.attended_events.upcoming
@@ -19,5 +16,9 @@ class User < ActiveRecord::Base
 
   def past_events
   	self.attended_events.past
+  end
+
+  def attending?(event)
+    event.attendees.include?(self)
   end
 end

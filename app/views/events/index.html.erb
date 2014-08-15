@@ -1,18 +1,5 @@
 <% if @events.any? %>
-	<!-- <h2>Past events</h2>
-	<% if @past_events.any? %>
-		
-		<ul>
-		<% @past_events.each do |event| %>
-			<li><%= link_to event.title, event %></li>
-		<% end %>
-		</ul>
 
-	<% else %>
-		There are not past events.
-	<% end %> -->
-
-	<!-- <h2>Upcoming events</h2> -->
 	<% if @upcoming_events.any? %>	
 		<ul class="col-lg-7 col-lg-offset-1">
 		<% @upcoming_events.each do |event| %>

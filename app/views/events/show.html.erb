@@ -2,33 +2,31 @@
 
 <div class="right"> <%= image_tag @event.image.url(:medium) %></div>
 
-<h3><%= @event.title %></h3>
+	<h3><%= @event.title %></h3>
 
-<p><span class="glyphicon glyphicon-calendar"></span> <%= @event.date.strftime('%A, %l:%M %p') %></p>
-<p><span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %></p>
-<p class="event-desc"> <%= @event.description %></p>
+	<p><span class="glyphicon glyphicon-calendar"></span> <%= @event.date.strftime('%A, %l:%M %p') %></p>
+	<p><span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %></p>
+	<p class="event-desc"> <%= @event.description %></p>
 
-<p>Created by: <%= link_to @event.creator.username, @event.creator %></p>
+	<p>Created by: <%= @event.creator.username %></p>
 
-<% if current_user == @event.creator %>
+	<% if current_user == @event.creator %>
 
-<%= link_to 'Update event details', edit_event_path %>
+	<%= link_to 'Update event details', edit_event_path, class: 'btn btn-success' %>
 
-<%= link_to 'Delete this event', event_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%= link_to 'Delete this event', event_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-success' %>
 
-<% end %>
+	<% end %>
 
-<!--<% if @event.attendees.any? %>
+	<% if (user_signed_in?) && (current_user != @event.creator) %>
+
+		<% if current_user.attending?(@event) %>
+			
+			<%= button_to 'Cancel', cancel_event_path(@event.id), method: :post, class: 'btn btn-warning' %>
+		<% else %>
+			<%= button_to 'Attend', attend_event_path(@event.id), method: :post, class: 'btn btn-success' %>
+		<% end %>	
 	
-	<ul>
-		<% @event.attendees.each do |attendee| %>
-			<li><%= attendee %></li>
-		<% end %>
-	</ul>
-<% else %>
-	
-	<p class="message">Nobody invited</p>
-	
-<% end %>-->
+	<% end %>
 
 </div>

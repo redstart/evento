@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
 
-	before_action :creator?, only: [:edit, :update, :destroy]
 	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
@@ -30,10 +29,24 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 	end
 
+	def attend
+    	@event = Event.find(params[:id])
+    	current_user.attended_events << @event
+	    flash[:notice] = "You're attending this event now."
+	   	redirect_to current_user
+  	end
+
+  	def cancel
+  		@event = Event.find(params[:id])
+  		current_user.attended_events.delete(@event)
+  		flash[:notice] = "Event deleted from your list."
+  		redirect_to current_user
+  	end
+
 	def update
 		@event = Event.find(params[:id])
-	    if @event.update_attributes(event_params)&&(current_user=@event.creator)
-	      flash[:success] = "Event details updated"
+	    if @event.update_attributes(event_params)&&(current_user==@event.creator)
+	      flash[:notice] = "Event details updated"
 	      redirect_to @event
 	    else
 	      render :edit
