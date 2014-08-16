@@ -46,11 +46,10 @@ end
 
 group :development, :test do
 	gem 'rspec-rails', '~> 2.14.2'
-end
-
-group :test do
 	gem 'selenium-webdriver', '~> 2.42.0'
 	gem 'capybara', '~> 2.4.1'
+	gem 'guard-rspec', '~> 4.3.1'
+	gem 'factory_girl_rails', '~> 4.4.1'
 end
 
 group :development do

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :registrations, foreign_key: "attendee_id"
   has_many :attended_events, through: :registrations
 
-  # validates :username, presence: true
+  validates :username, presence: true
 
   def upcoming_events
   	self.attended_events.upcoming
