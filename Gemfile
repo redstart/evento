@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
@@ -53,7 +55,6 @@ group :development, :test do
 end
 
 group :development do
-	gem 'pg'
 	gem 'populator', '~> 1.0.0'
 	gem 'faker', '~> 1.4.2'
 end
@@ -62,3 +63,8 @@ gem "paperclip", "~> 4.1"
 gem 'devise', '~> 3.3.0'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'pg', '~> 0.17.1'
+
+group :production do
+	gem 'rails_12factor'
+end
