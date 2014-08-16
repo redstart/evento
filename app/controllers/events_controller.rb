@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
-		@upcoming_events = Event.upcoming
+		@upcoming_events = Event.upcoming.paginate(page: params[:page], per_page: 5)
 		@past_events = Event.past
 	end
 

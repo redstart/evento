@@ -50,8 +50,6 @@ group :development, :test do
 	gem 'capybara', '~> 2.4.1'
 	gem 'guard-rspec', '~> 4.3.1'
 	gem 'factory_girl_rails', '~> 4.4.1'
-	gem 'launchy', '~> 2.4.2'
-	gem 'database_cleaner', '~> 1.3.0'
 end
 
 group :development do
@@ -62,3 +60,5 @@ end
 
 gem "paperclip", "~> 4.1"
 gem 'devise', '~> 3.3.0'
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap', '~> 1.0.1'

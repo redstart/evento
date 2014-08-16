@@ -1,7 +1,8 @@
+<div class="row">
 <% if @events.any? %>
 
 	<% if @upcoming_events.any? %>	
-		<ul class="col-lg-7 col-lg-offset-1">
+		<ul class="col-lg-9 col-lg-offset-1">
 		<% @upcoming_events.each do |event| %>
 			<li>
 				<div class="event-slot">
@@ -25,3 +26,10 @@
 	<p>Event list is empty.</p>
 
 <% end %>
+</div>
+
+<div class="row  col-lg-4 col-lg-offset-4">
+	<div class="page">
+		<%= will_paginate @upcoming_events, renderer: BootstrapPagination::Rails %>
+	</div>
+</div>
