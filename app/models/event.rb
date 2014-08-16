@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 	belongs_to :creator, class_name: "User"
 	has_many :registrations, foreign_key: "attended_event_id"
 	has_many :attendees, through: :registrations
-	has_attached_file :image, styles: { medium: "200x200", thumb: "100x100" }, default_url: "missing_:style.png"
+	has_attached_file :image, styles: { medium: "200x200", thumb: "100x100" }, default_url: "images/missing_:style.png"
 
 
 	validates :title, presence: true
