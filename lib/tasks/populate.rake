@@ -2,7 +2,7 @@ namespace :db do
 	desc "Erase and fill database"
 	task :populate => :environment do
 
-		[User, Event, Invitation].each(&:delete_all)
+		[User, Event, Registration].each(&:delete_all)
 		password = "password"
 
 		Event.populate 20 do |event|
