@@ -1,33 +1,45 @@
-# require 'spec_helper'
+require 'spec_helper'
 
-# feature 'User create event' do
+feature 'User create event' do
 
-#   scenario 'with valid information' do
-#   	before do 
-#     let(:user) { FactoryGirl.create(:user) }
+  background do
+    visit new_user_session_path
+
+    user = create(:user)
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign in'
+  end
+
+  scenario 'with valid information' do
     
-#     visit new_session_path
+    create_event_with('Awesome event',
+  	                  '23.08.2014',
+  	                  'St.Petersburg',
+  	                  'Cool party for everyone.'
+  	                  )
+  	expect(page).to have_content('Awesome event')
+  end
 
-#     fill_in 'Email', with: user.email
-#     fill_in 'Password', with: user.password
-#     click_button 'Sign in'
-#     end
-#     create_event_with('Awesome event',
-#   	                  '23.08.2014',
-#   	                  'St.Petersburg',
-#   	                  'Cool party for everyone.'
-#   	                  )
+  scenario 'without title and description' do
+    
+    create_event_with('',
+                      '23.08.2014',
+                      'St.Petersburg',
+                      ''
+                      )
+    expect(page).to have_content("Title can't be blank")
+  end
 
-#   	expect(page).to have_content('Awesome event', 'Delete event')
-#   end
+  def create_event_with(title, date, location, description)
+  	visit new_event_path
 
-#   def create_event_with(title, date, location, description)
-#   	visit new_event_path
+  	fill_in 'Title', with: title
+  	fill_in 'Date', with: date
+  	fill_in 'Location', with: location
+  	fill_in 'Description', with: description
+  	click_button 'Create'
+  end
 
-#   	fill_in 'Title', with: title
-#   	fill_in 'Date', with: date
-#   	fill_in 'Location', with: location
-#   	fill_in 'Description', with: description
-#   	click_button 'Create event'
-#   end
-# end
+
+end
