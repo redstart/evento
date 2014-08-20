@@ -3,9 +3,14 @@ class EventsController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
-		@events = Event.all
-		@upcoming_events = Event.upcoming.paginate(page: params[:page], per_page: 5)
-		@past_events = Event.past
+		if params[:tag]		
+			@events = Event.tagged_with(params[:tag])
+			@upcoming_events = Event.upcoming.paginate(page: params[:page], per_page: 5).tagged_with(params[:tag])
+		else
+			@events = Event.all
+			@upcoming_events = Event.upcoming.paginate(page: params[:page], per_page: 5)
+		end
+		# @past_events = Event.past
 	end
 
 	def new
@@ -62,6 +67,6 @@ class EventsController < ApplicationController
 	private
 
 		def event_params
-			params.require(:event).permit(:title, :description, :date, :location, :image)
+			params.require(:event).permit(:title, :description, :date, :location, :image, :tag_list)
 		end
 end

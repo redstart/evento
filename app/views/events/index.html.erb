@@ -12,6 +12,9 @@
 					<p><span class="glyphicon glyphicon-calendar"></span> <%= event.date.strftime('%A, %e %B, %Y') %></p>
 					<p><span class="glyphicon glyphicon-map-marker"></span> <%= event.location %></p>
 					<p class="event-desc"> <%= event.description.truncate(150) %></p>
+					<% if event.tags.any? %>
+					<p>Tags: <%= raw event.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+					<% end %>
 					</div>
 				</div>
 			</li>

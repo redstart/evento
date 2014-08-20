@@ -13,6 +13,7 @@ Evento::Application.routes.draw do
     end
   end
 
+  match '/tags/:tag', to: 'events#index', via: 'get', as: :tag
   # match '/signin', to: 'sessions#new', via: 'get'
   # match '/signup', to: 'users#new', via: 'get'
   # match '/signout', to: 'sessions#destroy', via: 'delete'

@@ -20,5 +20,12 @@ namespace :db do
  			user.encrypted_password = User.new(:password => password).encrypted_password
  			user.sign_in_count = 1	
 		end
+		
+		tags = Populator.words(10..20).split(' ')
+		events = Event.all
+
+		3.times do
+			events.each { |event| event.tags.create!(name: tags.sample) }
+		end
 	end
 end

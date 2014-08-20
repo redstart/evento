@@ -24,6 +24,10 @@
 			<%= f.text_area :description, class: "form-control" %>
 		</div>
 		<div class="form-group">
+			<%= f.label :tags, 'Tags separated by commas' %>
+			<%= f.text_field :tag_list, class: "form-control" %>
+		</div>
+		<div class="form-group">
 			<%= f.file_field :image %>
 		</div>
 		<div class="form-group">
